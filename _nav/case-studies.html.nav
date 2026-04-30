@@ -34,14 +34,14 @@
           <div class="nav-submenu" role="menu">
             <a href="services.html#accounting-bookkeeping" role="menuitem"><span class="ix">01</span><span>Accounting &amp; Bookkeeping</span></a>
             <a href="services.html#payroll" role="menuitem"><span class="ix">02</span><span>Payroll Management</span></a>
-            <a href="services.html#advisory-training" role="menuitem"><span class="ix">03</span><span>Business Advisory &amp; Training</span></a>
+            <a href="training.html" role="menuitem"><span class="ix">03</span><span>Business Advisory &amp; Training</span></a>
             <a href="services.html#taxation" role="menuitem"><span class="ix">04</span><span>Taxation Services</span></a>
             <a href="services.html#investment-insurance" role="menuitem"><span class="ix">05</span><span>Insurance &amp; Investment</span></a>
           </div>
         </div>
 
         <div class="nav-item"><a href="case-studies.html" class="is-active">Case Studies</a></div>
-        <div class="nav-item"><a href="services.html#training">Training</a></div>
+        <div class="nav-item"><a href="training.html">Training</a></div>
         <div class="nav-item"><a href="booking.html">Booking</a></div>
 
         <div class="nav-item has-children">

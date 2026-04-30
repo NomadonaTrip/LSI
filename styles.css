@@ -265,6 +265,7 @@ section { position: relative; }
 .nav-bar > .container {
   display: flex;
   align-items: center;
+  justify-content: center;
   height: 52px;
 }
 .logo-mark {
