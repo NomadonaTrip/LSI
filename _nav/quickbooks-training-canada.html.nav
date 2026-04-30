@@ -1,0 +1,69 @@
+<nav class="nav" aria-label="Primary">
+  <div class="container nav-top">
+    <a class="logo-mark" href="index.html" aria-label="LSI Accountants &amp; Bookkeepers Inc.">
+      <img class="mark-img" src="lsi_logo_cropped.png" alt="LSI" />
+      <span class="word">
+        <span class="tagline">Accounting, Payroll &amp; Taxes</span>
+        <span class="payoff">"Delivering Value Efficiently"</span>
+      </span>
+    </a>
+    <div class="nav-top-actions">
+      <a class="btn btn-primary nav-cta" href="contact.html">Get In Touch <span class="arrow"></span></a>
+      <button class="nav-burger" aria-label="Open navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="nav-bar">
+    <div class="container">
+      <div class="nav-links" role="navigation">
+        <div class="nav-item"><a href="index.html">Home</a></div>
+
+        <div class="nav-item has-children">
+          <button type="button" aria-haspopup="true" aria-expanded="false">About Us <span class="chev"></span></button>
+          <div class="nav-submenu" role="menu">
+            <a href="about.html" role="menuitem"><span class="ix">·</span><span>About Us</span></a>
+            <a href="https://proadvisor.intuit.com/app/accountant/search?searchId=lucky-idiake82" target="_blank" rel="noopener noreferrer" role="menuitem"><span class="ix">·</span><span>Intuit ProAdvisor <span class="ext">↗</span></span></a>
+            <a href="our-story.html" role="menuitem"><span class="ix">·</span><span>Our Story</span></a>
+          </div>
+        </div>
+
+        <div class="nav-item has-children">
+          <button type="button" aria-haspopup="true" aria-expanded="false">Services <span class="chev"></span></button>
+          <div class="nav-submenu" role="menu">
+            <a href="services.html#accounting-bookkeeping" role="menuitem"><span class="ix">01</span><span>Accounting &amp; Bookkeeping</span></a>
+            <a href="services.html#payroll" role="menuitem"><span class="ix">02</span><span>Payroll Management</span></a>
+            <a href="services.html#advisory-training" role="menuitem"><span class="ix">03</span><span>Business Advisory &amp; Training</span></a>
+            <a href="services.html#taxation" role="menuitem"><span class="ix">04</span><span>Taxation Services</span></a>
+            <a href="services.html#investment-insurance" role="menuitem"><span class="ix">05</span><span>Insurance &amp; Investment</span></a>
+          </div>
+        </div>
+
+        <div class="nav-item"><a href="case-studies.html">Case Studies</a></div>
+        <div class="nav-item"><a href="services.html#training">Training</a></div>
+        <div class="nav-item"><a href="booking.html">Booking</a></div>
+
+        <div class="nav-item has-children">
+          <button type="button" aria-haspopup="true" aria-expanded="false" class="is-active">Resources <span class="chev"></span></button>
+          <div class="nav-submenu is-wide" role="menu">
+            <a href="blog.html" role="menuitem"><span class="ix">·</span><span>All Resources</span></a>
+            <a href="accounting-services-hamilton.html" role="menuitem"><span class="ix">·</span><span>Accounting Services Hamilton</span></a>
+            <a href="accounting-firms-hamilton.html" role="menuitem"><span class="ix">·</span><span>Accounting Firms Hamilton</span></a>
+            <a href="bookkeeping-hamilton.html" role="menuitem"><span class="ix">·</span><span>Bookkeeping Hamilton</span></a>
+            <a href="financial-advisor-hamilton-ontario.html" role="menuitem"><span class="ix">·</span><span>Financial Advisor Hamilton Ontario</span></a>
+            <a href="bookkeeping-services-canada.html" role="menuitem"><span class="ix">·</span><span>Bookkeeping Services Canada</span></a>
+            <a href="hamilton-financial-planning.html" role="menuitem"><span class="ix">·</span><span>Hamilton Financial Planning</span></a>
+            <a href="payroll-services-canada.html" role="menuitem"><span class="ix">·</span><span>Payroll Services in Canada</span></a>
+            <a href="quickbooks-training-canada.html" role="menuitem"><span class="ix">·</span><span>Quickbooks Training Canada</span></a>
+            <a href="tax-planning-strategies-canada.html" role="menuitem"><span class="ix">·</span><span>Tax Planning Strategies Canada</span></a>
+            <a href="tax-preparation-hamilton.html" role="menuitem"><span class="ix">·</span><span>Tax Preparation Hamilton</span></a>
+          </div>
+        </div>
+
+        <div class="nav-item"><a href="contact.html">Contact</a></div>
+        <div class="nav-item"><a href="faqs.html">FAQs</a></div>
+      </div>
+    </div>
+  </div>
+</nav>

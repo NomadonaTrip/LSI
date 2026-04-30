@@ -246,16 +246,30 @@ section { position: relative; }
   background: rgba(252, 249, 248, 0.92);
   border-color: rgba(10, 31, 68, 0.1);
 }
-.nav-inner {
+.nav-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 76px;
+  height: 72px;
   gap: 24px;
+}
+.nav-top-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.nav-bar {
+  display: none;
+  border-top: 1px solid rgba(10, 31, 68, 0.06);
+}
+.nav-bar > .container {
+  display: flex;
+  align-items: center;
+  height: 52px;
 }
 .logo-mark {
   display: inline-flex;
-  align-items: center;
+  align-items: flex-end;
   gap: 12px;
   text-decoration: none;
   color: var(--primary);
@@ -267,10 +281,12 @@ section { position: relative; }
   width: auto;
   display: block;
 }
+.logo-mark { flex: none; }
 .logo-mark .word {
   display: inline-flex;
   flex-direction: column;
   gap: 2px;
+  white-space: nowrap;
 }
 .logo-mark .tagline {
   font-family: var(--font-sans);
@@ -306,11 +322,17 @@ section { position: relative; }
 }
 
 .nav-links {
-  display: none;
+  display: inline-flex;
   align-items: center;
-  gap: 36px;
+  gap: 32px;
+  flex-wrap: wrap;
 }
-.nav-links a {
+.nav-links > .nav-item {
+  position: relative;
+  white-space: nowrap;
+}
+.nav-links > .nav-item > a,
+.nav-links > .nav-item > button {
   font-family: var(--font-sans);
   font-weight: 700;
   font-size: 11px;
@@ -319,10 +341,18 @@ section { position: relative; }
   text-decoration: none;
   color: var(--on-surface-var);
   position: relative;
-  padding: 6px 0;
+  padding: 8px 0;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
   transition: color 0.3s var(--ease-luxe);
 }
-.nav-links a::after {
+.nav-links > .nav-item > a::after,
+.nav-links > .nav-item > button::after {
   content: '';
   position: absolute;
   left: 0; bottom: 0;
@@ -330,11 +360,181 @@ section { position: relative; }
   background: var(--secondary);
   transition: width 0.4s var(--ease-luxe);
 }
-.nav-links a:hover, .nav-links a.is-active {
+.nav-links > .nav-item.has-children > button::after {
+  /* the underline rule above stays; this rule only adds the chevron icon below */
+}
+.nav-links > .nav-item.has-children > button .chev {
+  width: 7px; height: 7px;
+  border-right: 1.4px solid currentColor;
+  border-bottom: 1.4px solid currentColor;
+  transform: rotate(45deg);
+  margin-top: -2px;
+  transition: transform 0.3s var(--ease-luxe);
+}
+.nav-links > .nav-item.is-open > button .chev,
+.nav-links > .nav-item:hover > button .chev {
+  transform: rotate(225deg);
+  margin-top: 2px;
+}
+.nav-links > .nav-item:hover > a,
+.nav-links > .nav-item:hover > button,
+.nav-links > .nav-item > a:hover,
+.nav-links > .nav-item > a.is-active,
+.nav-links > .nav-item > button.is-active {
   color: var(--primary);
 }
-.nav-links a.is-active::after,
-.nav-links a:hover::after { width: 100%; }
+.nav-links > .nav-item > a.is-active::after,
+.nav-links > .nav-item > a:hover::after,
+.nav-links > .nav-item:hover > button::after { width: 100%; }
+
+/* dropdown panel (desktop) */
+.nav-submenu {
+  position: absolute;
+  top: calc(100% + 18px);
+  left: -16px;
+  min-width: 280px;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(10, 31, 68, 0.08);
+  border-radius: 12px;
+  box-shadow: var(--shadow-floor);
+  padding: 12px;
+  display: grid;
+  gap: 2px;
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition: opacity 0.3s var(--ease-luxe), transform 0.3s var(--ease-luxe);
+  z-index: 70;
+}
+/* invisible bridge so the cursor doesn't fall through the gap */
+.nav-submenu::before {
+  content: '';
+  position: absolute;
+  top: -18px; left: 0; right: 0; height: 18px;
+}
+.nav-links > .nav-item.has-children:hover > .nav-submenu,
+.nav-links > .nav-item.is-open > .nav-submenu,
+.nav-links > .nav-item.has-children:focus-within > .nav-submenu {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.nav-submenu a {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--on-surface);
+  transition: background 0.2s var(--ease-luxe), color 0.2s var(--ease-luxe);
+}
+.nav-submenu a .ix {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--secondary);
+  font-size: 13px;
+}
+.nav-submenu a:hover {
+  background: var(--surface-low);
+  color: var(--primary);
+}
+.nav-submenu a.is-active {
+  background: var(--surface-low);
+  color: var(--primary);
+}
+.nav-submenu a .ext {
+  margin-left: auto;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--secondary);
+  font-weight: 700;
+}
+
+/* wider submenu for the Resources column with 10 items — split into 2 columns */
+.nav-submenu.is-wide {
+  grid-template-columns: repeat(2, 1fr);
+  min-width: 540px;
+  left: auto;
+  right: -16px;
+}
+@media (max-width: 1199px) {
+  .nav-submenu.is-wide {
+    /* keep right-aligned even on smaller desktops to avoid clipping */
+    left: auto; right: -16px;
+  }
+}
+
+/* mobile drawer — collapsible groups */
+.nav-drawer .draw-group {
+  border-bottom: 1px solid var(--outline-soft);
+}
+.nav-drawer .draw-group > .draw-link {
+  border-bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: transparent;
+  border: 0;
+  font-family: var(--font-serif);
+  font-size: 32px;
+  color: var(--primary);
+  cursor: pointer;
+  padding: 22px 0;
+  text-align: left;
+}
+.nav-drawer .draw-group > .draw-link .chev {
+  width: 11px; height: 11px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 0.3s var(--ease-luxe);
+  flex: none;
+  margin-right: 4px;
+}
+.nav-drawer .draw-group.is-open > .draw-link .chev {
+  transform: rotate(225deg);
+}
+.nav-drawer .draw-group .draw-sub {
+  display: grid;
+  gap: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s var(--ease-luxe);
+}
+.nav-drawer .draw-group.is-open .draw-sub { max-height: 1200px; }
+.nav-drawer .draw-group .draw-sub a {
+  padding: 12px 20px;
+  border-top: 1px solid var(--outline-soft);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--primary);
+  letter-spacing: 0;
+  text-transform: none;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.nav-drawer .draw-group .draw-sub a:hover { color: var(--secondary); }
+.nav-drawer .draw-group .draw-sub a .ix {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--secondary);
+  font-size: 13px;
+  width: 18px;
+}
 
 .nav-cta {
   display: none;
@@ -357,16 +557,17 @@ section { position: relative; }
 .nav-burger.is-open span:nth-child(2) { opacity: 0; }
 .nav-burger.is-open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
-@media (min-width: 920px) {
-  .nav-links { display: inline-flex; }
+@media (min-width: 980px) {
+  .nav-bar { display: block; }
   .nav-cta { display: inline-flex; }
   .nav-burger { display: none; }
 }
+.nav-cta { white-space: nowrap; }
 
 /* mobile drawer */
 .nav-drawer {
   position: fixed;
-  top: 76px;
+  top: 72px;
   left: 0; right: 0;
   bottom: 0;
   background: var(--surface);
@@ -1308,8 +1509,9 @@ section { position: relative; }
 .mt-xl { margin-top: clamp(48px, 7vw, 88px); }
 .mb-l { margin-bottom: clamp(24px, 4vw, 48px); }
 
-/* anchor offset for nav */
-section[id] { scroll-margin-top: 96px; }
+/* anchor offset for nav (top + bar height + breathing room) */
+section[id] { scroll-margin-top: 140px; }
+@media (max-width: 979px) { section[id] { scroll-margin-top: 88px; } }
 
 /* =========================================================
    Training Form — registration page components

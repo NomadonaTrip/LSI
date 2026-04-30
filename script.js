@@ -5,6 +5,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   initScrollNav();
   initMobileNav();
+  initNavDropdowns();
   initReveal();
   initFaq();
   initContactForm();
@@ -23,6 +24,42 @@ function initScrollNav() {
   };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+}
+
+/* desktop hover/click dropdowns + mobile collapsible groups */
+function initNavDropdowns() {
+  // Desktop: hover is handled by CSS; we still wire click to toggle so keyboard
+  // / touch users can open menus and Escape closes everything.
+  const items = document.querySelectorAll('.nav-links .nav-item.has-children');
+  items.forEach((item) => {
+    const trigger = item.querySelector(':scope > button');
+    if (!trigger) return;
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const open = item.classList.contains('is-open');
+      // close siblings
+      items.forEach(s => s.classList.remove('is-open'));
+      if (!open) item.classList.add('is-open');
+    });
+  });
+  document.addEventListener('click', () => {
+    items.forEach(s => s.classList.remove('is-open'));
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') items.forEach(s => s.classList.remove('is-open'));
+  });
+
+  // Mobile drawer: each group expands inline when its parent button is tapped
+  document.querySelectorAll('.nav-drawer .draw-group').forEach((group) => {
+    const btn = group.querySelector(':scope > .draw-link');
+    if (!btn) return;
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      group.classList.toggle('is-open');
+      const expanded = group.classList.contains('is-open');
+      btn.setAttribute('aria-expanded', String(expanded));
+    });
+  });
 }
 
 /* mobile drawer */
